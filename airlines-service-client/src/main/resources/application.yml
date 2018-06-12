@@ -1,0 +1,21 @@
+# Spring properties
+spring:
+  application:
+    name: airlines-service-client  # Identify this application
+  freemarker:
+    enabled: false     # Ignore Eureka dashboard FreeMarker templates
+  thymeleaf:
+    cache: false       # Allow Thymeleaf templates to be reloaded at runtime
+    prefix: classpath:/templates/    # Trailing / mandatory
+# Template location for this application only
+# HTTP Server
+server:
+  port: 8099
+# Eureka Server Access
+eureka:
+  enabled: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
