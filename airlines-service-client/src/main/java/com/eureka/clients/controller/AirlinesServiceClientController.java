@@ -23,7 +23,7 @@ public class AirlinesServiceClientController {
 	@RequestMapping("/airlines/{name}")
 	public String airlines(Model model, @PathVariable("name") String name) {
 		Airlines airlines = helloWorldService.airline(name);
-		model.addAttribute("greeting", airlines.getContent());
+		model.addAttribute("airlines", airlines.getContent());
 		return "airlines";
 	}
 
