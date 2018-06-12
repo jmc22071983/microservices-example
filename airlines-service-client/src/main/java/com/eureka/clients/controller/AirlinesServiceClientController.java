@@ -20,11 +20,11 @@ public class AirlinesServiceClientController {
 		return "hola";
 	}
 
-	@RequestMapping("/greeting/{name}")
-	public String greeting(Model model, @PathVariable("name") String name) {
+	@RequestMapping("/airlines/{name}")
+	public String airlines(Model model, @PathVariable("name") String name) {
 		Airlines airlines = helloWorldService.airline(name);
 		model.addAttribute("greeting", airlines.getContent());
-		return "greeting";
+		return "airlines";
 	}
 
 }

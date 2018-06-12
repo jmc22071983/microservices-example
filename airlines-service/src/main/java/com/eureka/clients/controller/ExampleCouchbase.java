@@ -30,7 +30,7 @@ public class ExampleCouchbase {
 	}
 
 	
-	@RequestMapping(value="/airlines", method = RequestMethod.GET)
+	@RequestMapping(value="/airlines/{name}", method = RequestMethod.GET)
 	public static String airlines() {
 		Bucket bucket = getBucket("travel-sample", "sysadmin");
 		JsonDocument jsonD = bucket.get("airline_10");
