@@ -16,7 +16,7 @@ services:
       - 8094:8094
       - 11210:11210
     deploy:
-      replicas: 2
+      replicas: 1
   client1:
     image: jmc22071983/client1:0.0.1-SNAPSHOT
     environment:
