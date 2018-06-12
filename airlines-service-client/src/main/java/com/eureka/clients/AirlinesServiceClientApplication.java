@@ -14,7 +14,7 @@ import com.eureka.clients.controller.AirlinesServiceClientController;
 @EnableDiscoveryClient
 @ComponentScan(useDefaultFilters = false) // Disable component scanner
 public class AirlinesServiceClientApplication {
-	public static final String SERVICE_URL = "http://GREETING-SERVICE";
+	public static final String SERVICE_URL = "http://AIRLINES-SERVICE-CLIENT";
 
 	public static void main(String[] args) {
 		SpringApplication.run(AirlinesServiceClientApplication.class, args);

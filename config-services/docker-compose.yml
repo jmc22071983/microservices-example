@@ -17,8 +17,8 @@ services:
       - 11210:11210
     deploy:
       replicas: 1
-  client1:
-    image: jmc22071983/client1:0.0.1-SNAPSHOT
+  airlines-service:
+    image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
     environment:
       - couchbase_addr=192.168.99.101:8091
     depends_on: 
@@ -28,6 +28,17 @@ services:
       replicas: 2
     ports:
       - 8098
+  airlines-service-client:
+    image: jmc22071983/airlines-service-client:0.0.1-SNAPSHOT
+    environment:
+      - couchbase_addr=192.168.99.101:8091
+    depends_on: 
+      - eureka-server
+    deploy:
+      mode: replicated
+      replicas: 2
+    ports:
+      - 8099
   visualizer:
     image: dockersamples/visualizer:stable
     ports:
