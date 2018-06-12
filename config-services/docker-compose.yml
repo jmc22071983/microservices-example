@@ -1,7 +1,7 @@
 version: "3"
 services:
   eureka-server:
-    image: jmc22071983/eurekaserver:0.0.1-SNAPSHOT
+    image: jmc22071983/eureka-server:0.0.1-SNAPSHOT
     ports:
       - 8761
     deploy:
@@ -17,8 +17,8 @@ services:
       - 11210:11210
     deploy:
       replicas: 2
-  demo:
-    image: jmc22071983/demo:0.0.1-SNAPSHOT
+  client1:
+    image: jmc22071983/client1:0.0.1-SNAPSHOT
     environment:
       - couchbase_addr=192.168.99.101:8091
     depends_on: 
