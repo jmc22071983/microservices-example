@@ -1,9 +1,11 @@
-server:
-  port: 8098
- 
+# Spring properties
 spring:
   application:
     name: eureka-client
+# HTTP Server
+server:
+  port: 8098
+# Eureka Server Access
 eureka:
   enabled: true
   client:
@@ -11,4 +13,3 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-server:8761/eureka/
-      port: ${PORT:8761}
