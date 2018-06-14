@@ -1,0 +1,118 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 352256 bytes for object start array expansion
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (objectStartArray.cpp:102), pid=21768, tid=0x0000000000005520
+#
+# JRE version:  (8.0_131-b11) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.131-b11 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000240e800):  JavaThread "Unknown thread" [_thread_in_vm, id=21792, stack(0x00000000027a0000,0x00000000028a0000)]
+
+Stack: [0x00000000027a0000,0x00000000028a0000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000000000240e800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=21792, stack(0x00000000027a0000,0x00000000028a0000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x000000013f9e0000 - 0x000000013fa17000 	C:\Program Files\Java\jdk1.8.0_131\bin\javaw.exe
+0x0000000077240000 - 0x00000000773e9000 	C:\Windows\SYSTEM32\ntdll.dll
+0x0000000077120000 - 0x0000000077240000 	C:\Windows\system32\kernel32.dll
+0x000007fefd1a0000 - 0x000007fefd20c000 	C:\Windows\system32\KERNELBASE.dll
+0x0000000074d00000 - 0x0000000074d88000 	C:\Windows\System32\SYSFER.DLL
+0x000007fefe490000 - 0x000007fefe56b000 	C:\Windows\system32\ADVAPI32.dll
+0x000007feff360000 - 0x000007feff3ff000 	C:\Windows\system32\msvcrt.dll
+0x000007feff530000 - 0x000007feff54f000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007fefefd0000 - 0x000007feff0fd000 	C:\Windows\system32\RPCRT4.dll
+0x0000000077020000 - 0x000000007711a000 	C:\Windows\system32\USER32.dll
+0x000007fefe750000 - 0x000007fefe7b7000 	C:\Windows\system32\GDI32.dll
+0x000007fefea80000 - 0x000007fefea8e000 	C:\Windows\system32\LPK.dll
+0x000007feff400000 - 0x000007feff4ca000 	C:\Windows\system32\USP10.dll
+0x000007fefb4f0000 - 0x000007fefb6e4000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.18837_none_fa3b1e3d17594757\COMCTL32.dll
+0x000007fefe860000 - 0x000007fefe8d1000 	C:\Windows\system32\SHLWAPI.dll
+0x000007fefea90000 - 0x000007fefeabe000 	C:\Windows\system32\IMM32.DLL
+0x000007fefeec0000 - 0x000007fefefc9000 	C:\Windows\system32\MSCTF.dll
+0x000007fefcf40000 - 0x000007fefcf57000 	C:\Windows\system32\AMINIT64.DLL
+0x0000000052600000 - 0x00000000526d2000 	C:\Program Files\Java\jdk1.8.0_131\jre\bin\msvcr100.dll
+0x000000006fd10000 - 0x00000000705ac000 	C:\Program Files\Java\jdk1.8.0_131\jre\bin\server\jvm.dll
+0x000007fef6de0000 - 0x000007fef6de9000 	C:\Windows\system32\WSOCK32.dll
+0x000007fefeac0000 - 0x000007fefeb0d000 	C:\Windows\system32\WS2_32.dll
+0x000007fefe8e0000 - 0x000007fefe8e8000 	C:\Windows\system32\NSI.dll
+0x000007fefb2b0000 - 0x000007fefb2eb000 	C:\Windows\system32\WINMM.dll
+0x000007fefc0b0000 - 0x000007fefc0bc000 	C:\Windows\system32\VERSION.dll
+0x0000000077410000 - 0x0000000077417000 	C:\Windows\system32\PSAPI.DLL
+0x00000000529a0000 - 0x00000000529af000 	C:\Program Files\Java\jdk1.8.0_131\jre\bin\verify.dll
+0x0000000052970000 - 0x0000000052999000 	C:\Program Files\Java\jdk1.8.0_131\jre\bin\java.dll
+0x0000000052950000 - 0x0000000052966000 	C:\Program Files\Java\jdk1.8.0_131\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54900 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=localhost -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -Xverify:none -XX:TieredStopAtLevel=1 -Dfile.encoding=UTF-8 
+java_command: com.eureka.clients.AirlinesApplication
+java_class_path (initial): C:\Proyectos\PruebasConcepto\microservices-example\airlines-service\target\classes;C:\Users\30044840\.m2\repository\org\springframework\boot\spring-boot-starter-actuator\2.0.2.RELEASE\spring-boot-starter-actuator-2.0.2.RELEASE.jar;C:\Users\30044840\.m2\repository\org\springframework\boot\spring-boot-starter\2.0.2.RELEASE\spring-boot-starter-2.0.2.RELEASE.jar;C:\Users\30044840\.m2\repository\org\springframework\boot\spring-boot\2.0.2.RELEASE\spring-boot-2.0.2.RELEASE.jar;C:\Users\30044840\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\2.0.2.RELEASE\spring-boot-autoconfigure-2.0.2.RELEASE.jar;C:\Users\30044840\.m2\repository\org\springframework\boot\spring-boot-starter-logging\2.0.2.RELEASE\spring-boot-starter-logging-2.0.2.RELEASE.jar;C:\Users\30044840\.m2\repository\ch\qos\logback\logback-classic\1.2.3\logback-classic-1.2.3.jar;C:\Users\30044840\.m2\repository\ch\qos\logback\logback-core\1.2.3\logback-core-1.2.3.jar;C:\Users\30044840\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.10.0\log4j-to-slf4j-2.10.0.jar;C:\Users\30044840\.m2\repository\org\apache\logging\log4j\log4j-api\2.10.0\log4j-api-2.10.0.jar;C:\Users\30044840\.m2\repository\org\slf4j\jul-to-slf4j\1.7.25\jul-to-slf4j-1.7.25.jar;C:\Users\30044840\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\30044840\.m2\repository\org\yaml\snakeyaml\1.19\snakeyaml-1.19.jar;C:\Users\30044840\.m2\repository\org\springframework\boot\spring-boot-actuator-autoconfigure\2.0.2.RELEASE\spring-boot-actuator-autoconfigure-2.0.2.RELEASE.jar;C:\Users\30044840\.m2\repository\org\springframework\boot\spring-boot-actuator\2.0.2.RELEASE\spring-boot-actuator-2.0.2.RELEASE.jar;C:\Users\30044840\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.9.3\jackson-databind-2.9.3.jar;C:\Users\30044840\.m2\repository\org\springframework\spring-context\5.0.6.RELEASE\spring-context-5.0.6.RELEASE.jar;C:\Users\30044840\.m2\repository
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_131
+PATH=C:/Program Files/Java/jre1.8.0_171/bin/server;C:/Program Files/Java/jre1.8.0_171/bin;C:/Program Files/Java/jre1.8.0_171/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;c:\bin\ingresII\ingres\bin;C:\Program Files\Git\cmd;C:\Program Files\SourceGear\Common\DiffMerge\;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\Users\30044840\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\Users\30044840\Desktop;
+USERNAME=30044840
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 61 Stepping 4, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 (6.1.7601.19045)
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 61 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 16649328k(202112k free), swap 18744568k(5096k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.131-b11) for windows-amd64 JRE (1.8.0_131-b11), built on Mar 15 2017 01:23:53 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Thu Jun 14 11:03:24 2018
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

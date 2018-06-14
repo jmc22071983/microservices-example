@@ -1,8 +1,10 @@
 package com.eureka.clients;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Service
 public class ClientAirlinesService {
 	@Autowired
 	protected RestTemplate restTemplate;
@@ -13,7 +15,12 @@ public class ClientAirlinesService {
 	}
 
 	// invoke to airlines-service and return a Airlines object
-	public Airlines airline(String name) {
-		return restTemplate.getForObject(serviceUrl + "/greeting/{name}", Airlines.class, name);
+	public Airlines airlines(String name) {
+		return restTemplate.getForObject(serviceUrl + "/airlines/{name}", Airlines.class, name);
+	}
+
+	// invoke to test and return a String object
+	public String test() {
+		return restTemplate.getForObject(serviceUrl + "/test", String.class);
 	}
 }

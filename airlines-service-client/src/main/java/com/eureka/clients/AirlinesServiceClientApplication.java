@@ -12,7 +12,7 @@ import com.eureka.clients.controller.AirlinesServiceClientController;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(useDefaultFilters = false) // Disable component scanner
+@ComponentScan(useDefaultFilters = false) // Disable component scanner ...
 public class AirlinesServiceClientApplication {
 	public static final String SERVICE_URL = "http://AIRLINES-SERVICE";
 

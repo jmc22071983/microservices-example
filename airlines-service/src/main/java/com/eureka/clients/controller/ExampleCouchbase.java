@@ -28,6 +28,11 @@ public class ExampleCouchbase {
 		return cluster.openBucket(bName, bPass);
 		
 	}
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "hola";
+	}
 
 	
 	@RequestMapping(value="/airlines/{name}", method = RequestMethod.GET)
