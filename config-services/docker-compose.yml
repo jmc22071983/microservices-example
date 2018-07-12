@@ -6,7 +6,7 @@ services:
       - 8761
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
   couchbase:
     image: couchbase/server
     ports:
@@ -25,7 +25,7 @@ services:
       - eureka-server
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
     ports:
       - 8098
   airlines-service-client:
@@ -36,7 +36,7 @@ services:
       - eureka-server
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
     ports:
       - 8099
   visualizer:
