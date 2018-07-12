@@ -21,7 +21,7 @@ services:
     image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
     environment:
       - couchbase_addr=192.168.99.101:8091
-    depends_on: 
+    depends_on:
       - eureka-server
     deploy:
       mode: replicated
@@ -32,7 +32,7 @@ services:
     image: jmc22071983/airlines-service-client:0.0.1-SNAPSHOT
     environment:
       - couchbase_addr=192.168.99.101:8091
-    depends_on: 
+    depends_on:
       - eureka-server
     deploy:
       mode: replicated
