@@ -7,7 +7,6 @@ services:
     deploy:
       mode: replicated
       replicas: 2
-    hostname: eureka-server
   couchbase:
     image: couchbase/server
     ports:
@@ -29,7 +28,8 @@ services:
       replicas: 2
     ports:
       - 8098
-    hostname: eureka-server
+    instance:
+        hostName: eureka-server
   airlines-service-client:
     image: jmc22071983/airlines-service-client:0.0.1-SNAPSHOT
     environment:
@@ -41,7 +41,8 @@ services:
       replicas: 2
     ports:
       - 8099
-    hostname: eureka-server
+    instance:
+        hostName: eureka-server
   visualizer:
     image: dockersamples/visualizer:stable
     ports:
