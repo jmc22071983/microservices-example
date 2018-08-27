@@ -1,8 +1,8 @@
 server:
   port: ${PORT:8761}
-eureka-server:
-  instance:
-    hostname: localhost
+eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0 

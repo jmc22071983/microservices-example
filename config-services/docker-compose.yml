@@ -1,4 +1,4 @@
-version: "3"
+    version: "3"
 services:
   eureka-server:
     image: jmc22071983/eureka-server:0.0.1-SNAPSHOT
@@ -7,6 +7,7 @@ services:
     deploy:
       mode: replicated
       replicas: 2
+    hostname: eureka-server
   couchbase:
     image: couchbase/server
     ports:
