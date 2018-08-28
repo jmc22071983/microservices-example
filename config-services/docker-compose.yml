@@ -5,6 +5,10 @@ services:
         ports:
           - 8761
         hostname: eureka-server
+        networks:
+            app_network:
+                aliases:
+                    - eureka-server
     airlines-service:
         image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
         environment:
@@ -13,3 +17,7 @@ services:
           - eureka-server
         ports:
           - 8098
+        networks:
+            app_network:
+                aliases:
+                    - eureka-server
