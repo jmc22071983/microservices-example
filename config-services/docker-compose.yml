@@ -20,6 +20,7 @@ services:
       replicas: 1
     ports:
       - 8098
+    hostname: eureka-server
     networks:
       - app_network
 
