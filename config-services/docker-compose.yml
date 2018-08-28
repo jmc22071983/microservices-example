@@ -15,7 +15,7 @@ services:
       - eureka-server
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
     ports:
       - 8098
-    hostname: eureka-server
+  
