@@ -28,8 +28,7 @@ services:
       replicas: 2
     ports:
       - 8098
-    instance:
-        hostName: eureka-server
+    hostname: eureka-server
   airlines-service-client:
     image: jmc22071983/airlines-service-client:0.0.1-SNAPSHOT
     environment:
@@ -42,7 +41,7 @@ services:
     ports:
       - 8099
     instance:
-        hostName: eureka-server
+        hostname: eureka-server
   visualizer:
     image: dockersamples/visualizer:stable
     ports:
