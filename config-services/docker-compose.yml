@@ -1,6 +1,6 @@
 version: "3"
 services:
-  eureka-server:
+  eureka:
     image: jmc22071983/eureka-server:0.0.1-SNAPSHOT
     ports:
       - 8761
