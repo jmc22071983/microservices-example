@@ -3,15 +3,12 @@ spring:
     name: airlines-service
 server:
   port: 8098
-eureka:
+eureka-server:
   instance:
-    leaseRenewalIntervalInSeconds: 1
-    leaseExpirationDurationInSeconds: 2
+    hostName: eureka-server
+    preferIpAddress: false
   client:
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-server:8761/eureka/
-    healthcheck:
-      enabled: true
-    lease:
-      duration: 5
-  
