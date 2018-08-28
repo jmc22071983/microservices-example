@@ -6,7 +6,6 @@ services:
           - 8761
     airlines-service:
         image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
-        container_name: airlines-service
         environment:
           - couchbase_addr=192.168.99.101:8091
         depends_on:
