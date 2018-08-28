@@ -9,6 +9,7 @@ services:
       replicas: 1
     networks:
       - app_network
+    container_name: eureka
   airlines-service:
     image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
     environment:
