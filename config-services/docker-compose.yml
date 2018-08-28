@@ -1,4 +1,4 @@
-version: "3.4"
+version: "3"
 services:
   eureka-server:
     image: jmc22071983/eureka-server:0.0.1-SNAPSHOT
@@ -19,5 +19,5 @@ services:
     ports:
       - 8098
     links:
-      - eureka-server
+      - "eureka-server"
   
