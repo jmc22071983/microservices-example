@@ -2,13 +2,11 @@ version: "3"
 services:
     eureka-server:
         image: jmc22071983/eureka-server:0.0.1-SNAPSHOT
-        container_name: eureka-server
         ports:
           - 8761
         hostname: eureka-server
     airlines-service:
         image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
-        container_name: airlines-service
         environment:
           - couchbase_addr=192.168.99.101:8091
         depends_on:
