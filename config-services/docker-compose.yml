@@ -21,3 +21,5 @@ services:
             app_network:
                 aliases:
                     - eureka-server
+networks:
+  app_network:
