@@ -1,53 +1,17 @@
 version: "3"
 services:
-  eureka-server:
-    image: jmc22071983/eureka-server:0.0.1-SNAPSHOT
-    ports:
-      - 8761
-    deploy:
-      mode: replicated
-      replicas: 2
-  couchbase:
-    image: couchbase/server
-    ports:
-      - 8091:8091
-      - 8092:8092
-      - 8093:8093
-      - 8094:8094
-      - 11210:11210
-    deploy:
-      replicas: 1
-  airlines-service:
-    image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
-    environment:
-      - couchbase_addr=192.168.99.101:8091
-    depends_on:
-      - eureka-server
-    deploy:
-      mode: replicated
-      replicas: 2
-    ports:
-      - 8098
-    hostname: eureka-server
-  airlines-service-client:
-    image: jmc22071983/airlines-service-client:0.0.1-SNAPSHOT
-    environment:
-      - couchbase_addr=192.168.99.101:8091
-    depends_on:
-      - eureka-server
-    deploy:
-      mode: replicated
-      replicas: 2
-    ports:
-      - 8099
-    instance:
+    eureka-server:
+        image: jmc22071983/eureka-server:0.0.1-SNAPSHOT
+        container_name: eureka-server
+        ports:
+          - 8761
         hostname: eureka-server
-  visualizer:
-    image: dockersamples/visualizer:stable
-    ports:
-      - 8080:8080
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    deploy:
-      placement:
-        constraints: [node.role == manager]
+    airlines-service:
+        image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
+        container_name: airlines-service
+        environment:
+          - couchbase_addr=192.168.99.101:8091
+        depends_on:
+          - eureka-server
+        ports:
+          - 8098
