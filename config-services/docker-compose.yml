@@ -20,6 +20,7 @@ services:
       replicas: 1
     ports:
       - 8098
+    hostname: localhost
     networks:
       - app_network
 
