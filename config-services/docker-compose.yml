@@ -1,15 +1,21 @@
 version: "3"
 services:
-    eureka-server:
-        image: jmc22071983/eureka-server:0.0.1-SNAPSHOT
-        ports:
-          - 8761
-    airlines-service:
-        image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
-        environment:
-          - couchbase_addr=192.168.99.101:8091
-        depends_on:
-          - eureka-server
-        ports:
-          - 8098
-        hostname: eureka-server
+  eureka-server:
+    image: jmc22071983/eureka-server:0.0.1-SNAPSHOT
+    ports:
+      - 8761
+    deploy:
+      mode: replicated
+      replicas: 1
+  airlines-service:
+    image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
+    environment:
+      - couchbase_addr=192.168.99.101:8091
+    depends_on:
+      - eureka-server
+    deploy:
+      mode: replicated
+      replicas: 2
+    ports:
+      - 8098
+    hostname: eureka-server
