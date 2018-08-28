@@ -18,4 +18,6 @@ services:
       replicas: 1
     ports:
       - 8098
+    links:
+      - eureka-server
   
