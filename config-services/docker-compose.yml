@@ -33,16 +33,7 @@ services:
       - 8099
     environment:
      eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/ 
-  visualizer:
-    image: dockersamples/visualizer:stable
-    ports:
-      - 8080:8080
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-   couchbase:
+  couchbase:
     image: couchbase/server
     ports:
       - 8091:8091
@@ -52,3 +43,12 @@ services:
       - 11210:11210
     deploy:
       replicas: 1
+  portainer:
+    image: portainer/portainer
+    command: -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+volumes:
+  portainer_data:
