@@ -17,9 +17,9 @@ services:
       - eureka-server
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
       placement:
-        constraints: [node.hostname == worker2]
+        constraints: [node.hostname != manager1]
     ports:
       - 8098
     environment:
@@ -32,9 +32,9 @@ services:
       - eureka-server
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
       placement:
-        constraints: [node.hostname == worker1]
+        constraints: [node.hostname != manager1]
     ports:
       - 8099
     environment:
