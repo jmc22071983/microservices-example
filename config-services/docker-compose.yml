@@ -7,6 +7,8 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+      placement:
+        constraints: [node.role == manager1]
   airlines-service:
     image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
     environment:
@@ -16,6 +18,8 @@ services:
     deploy:
       mode: replicated
       replicas: 2
+       placement:
+        constraints: [node.role == worker2]
     ports:
       - 8098
     environment:
@@ -29,6 +33,8 @@ services:
     deploy:
       mode: replicated
       replicas: 2
+      placement:
+        constraints: [node.role == worker1]
     ports:
       - 8099
     environment:
@@ -43,6 +49,8 @@ services:
       - 11210:11210
     deploy:
       replicas: 1
+      placement:
+        constraints: [node.role == manager1]
   portainer:
     image: portainer/portainer:latest
     command: -H unix:///var/run/docker.sock
