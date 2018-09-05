@@ -8,7 +8,7 @@ services:
       mode: replicated
       replicas: 1
       placement:
-        constraints: [node.role == manager1]
+        constraints: [node.hostname == manager1]
   airlines-service:
     image: jmc22071983/airlines-service:0.0.1-SNAPSHOT
     environment:
@@ -17,9 +17,9 @@ services:
       - eureka-server
     deploy:
       mode: replicated
-      replicas: 2
-       placement:
-        constraints: [node.role == worker2]
+      replicas: 1
+      placement:
+        constraints: [node.hostname == worker2]
     ports:
       - 8098
     environment:
@@ -32,9 +32,9 @@ services:
       - eureka-server
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
       placement:
-        constraints: [node.role == worker1]
+        constraints: [node.hostname == worker1]
     ports:
       - 8099
     environment:
@@ -50,7 +50,7 @@ services:
     deploy:
       replicas: 1
       placement:
-        constraints: [node.role == manager1]
+        constraints: [node.hostname == manager1]
   portainer:
     image: portainer/portainer:latest
     command: -H unix:///var/run/docker.sock
@@ -62,7 +62,7 @@ services:
     deploy:
       replicas: 1
       placement:
-        constraints: [node.role == manager]
+        constraints: [node.hostname == manager1]
 
 volumes:
   portainer_data:
