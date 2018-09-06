@@ -24,6 +24,7 @@ services:
       - 8098
     environment:
      eureka.client.serviceUrl.defaultZone: http://eureka:8761/eureka/ 
+      - couchbase_addr=192.168.99.104:8091
   airlines-service-client:
     image: jmc22071983/airlines-service-client:0.0.1-SNAPSHOT
     environment:
