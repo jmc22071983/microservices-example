@@ -62,7 +62,9 @@ services:
   weblogic:
     image: ismaleiva90/weblogic12
     ports:
-      - 7000
+      - 49163:7001
+      - 49164:7002 
+      - 49165:5556 
     deploy:
       mode: replicated
       replicas: 1
