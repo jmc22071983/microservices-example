@@ -1,5 +1,6 @@
 package com.eureka.clients.controller;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,9 +37,9 @@ public class ExampleCouchbase {
 
 	
 	@RequestMapping(value="/airlines/{name}", method = RequestMethod.GET)
-	public static String airlines() {
+	public static String airlines(@PathVariable String name) {
 		Bucket bucket = getBucket("travel-sample", "sysadmin");
-		JsonDocument jsonD = bucket.get("airline_10");
+		JsonDocument jsonD = bucket.get(name);
 		cluster.disconnect();
 		return jsonD.content().toString();
 
