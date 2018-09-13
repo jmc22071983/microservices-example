@@ -21,7 +21,7 @@ public class AirlinesServiceClientController {
 
 	@RequestMapping("/test")
 	public String test() {
-		String testA = helloWorldService.test();
+		String testA = "Hola Javi";
 		return testA;
 	}
 
