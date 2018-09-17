@@ -6,7 +6,7 @@ services:
       - 8761
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
       placement:
         constraints: [node.hostname != node-1]
   airlines-service:
