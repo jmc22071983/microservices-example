@@ -2,7 +2,7 @@ spring:
   application:
     name: airlines-service-client
 server:
-  port: 8098
+  port: 8099
 eureka:
   client:
     registerWithEureka: true

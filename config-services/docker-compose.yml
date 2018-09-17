@@ -59,17 +59,5 @@ services:
       replicas: 1
       placement:
         constraints: [node.hostname == node-1]
-  weblogic:
-    image: ismaleiva90/weblogic12
-    ports:
-      - 49163:7001
-      - 49164:7002 
-      - 49165:5556 
-    deploy:
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints: [node.hostname == node-1]
-
 volumes:
   portainer_data:
