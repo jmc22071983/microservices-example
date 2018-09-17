@@ -17,7 +17,7 @@ public class ExampleCouchbase {
 		/*
 		 * The first thing you need to do is connect to the cluster: 
 		 */
-		cluster = CouchbaseCluster.create("192.168.99.107:8091");
+		cluster = CouchbaseCluster.create("192.168.99.122:8091");
 		//cluster = CouchbaseCluster.create(System.getenv("couchbase_addr"));
 		/*
 		 * You do not need to pass in all nodes of the cluster, just a few seed nodes so that the client is able to establish initial contact. 
