@@ -15,8 +15,8 @@ public class ClientAirlinesService {
 	}
 
 	// invoke to airlines-service and return a Airlines object
-	public Airlines airlines(String name) {
-		return restTemplate.getForObject(serviceUrl + "/airlines/{name}", Airlines.class, name);
+	public String airlines(String name) {
+		return restTemplate.getForObject(serviceUrl + "/airlines/{name}", String.class, name);
 	}
 
 	// invoke to test and return a String object

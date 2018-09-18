@@ -1,15 +1,11 @@
 package com.eureka.clients;
 
-import com.fasterxml.jackson.annotation.JsonRootName;
+import java.util.Map;
 
-@JsonRootName("Airlines")
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+
 public class Airlines {
-	protected String content;
-
-	public Airlines(String content) {
-		super();
-		this.content = content;
-	}
+	private String content;
 
 	public String getContent() {
 		return content;
