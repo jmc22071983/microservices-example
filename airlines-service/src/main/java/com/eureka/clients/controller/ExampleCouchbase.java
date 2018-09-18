@@ -4,11 +4,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.couchbase.client.java.document.json.JsonArray;
+import com.couchbase.client.java.document.json.JsonObject;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
 import com.couchbase.client.java.CouchbaseCluster;
 import com.couchbase.client.java.document.JsonDocument;
+import com.couchbase.client.java.query.N1qlQuery;
+import com.couchbase.client.java.query.N1qlQueryResult;
+import com.couchbase.client.java.query.N1qlQueryRow;
 
 @RestController
 public class ExampleCouchbase {
@@ -29,13 +33,7 @@ public class ExampleCouchbase {
 		return cluster.openBucket(bName, bPass);
 		
 	}
-	
-	@RequestMapping("/test")
-	public String test() {
-		return "hola";
-	}
 
-	
 	@RequestMapping(value="/airlines/{name}", method = RequestMethod.GET)
 	public static String airlines(@PathVariable String name) {
 		Bucket bucket = getBucket("travel-sample", "sysadmin");
@@ -44,11 +42,21 @@ public class ExampleCouchbase {
 		return jsonD.content().toString();
 	}
 	
-	@RequestMapping(value="/airlines/", method = RequestMethod.GET)
+	@RequestMapping(value="/allAirlines", method = RequestMethod.GET)
 	public static String allAirlines() {
 		Bucket bucket = getBucket("travel-sample", "sysadmin");
 		// Create a N1QL Primary Index (but ignore if it exists)
-        bucket.bucketManager().
-		return null
+		bucket.bucketManager().createN1qlPrimaryIndex(true, false);	
+		// Perform a N1QL Query
+		N1qlQueryResult result = bucket.query(N1qlQuery.simple("SELECT id, name, country FROM `travel-sample` WHERE type = 'airline'"));
+        cluster.disconnect();
+		return result.allRows().toString();
 	}
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "hola";
+	}
+
+	
 }

@@ -29,5 +29,10 @@ public class AirlinesServiceClientController {
 	public String airlines(@PathVariable("name") String name) {
 		return airlineTest.airlines(name);
 	}
+	
+	@RequestMapping(value="/allAirlines", method = RequestMethod.GET)
+	public String allAirlines() {
+		return airlineTest.allAirlines();
+	}
 
 }

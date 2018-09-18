@@ -18,7 +18,12 @@ public class ClientAirlinesService {
 	public String airlines(String name) {
 		return restTemplate.getForObject(serviceUrl + "/airlines/{name}", String.class, name);
 	}
-
+	
+	// invoke to test and return a String object
+	public String allAirlines() {
+		return restTemplate.getForObject(serviceUrl + "/allAirlines", String.class);
+	}
+		
 	// invoke to test and return a String object
 	public String test() {
 		return restTemplate.getForObject(serviceUrl + "/test", String.class);
