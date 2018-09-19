@@ -1,11 +1,6 @@
-server:
-  port: ${PORT:8761}
-eureka:
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-  instance:
-    hostname: eureka
-    preferIpAddress: false
-  server:
-    waitTimeInMsWhenSyncEmpty: 0
+spring:
+  cloud:
+    config:
+      uri: http://config-services:8888
+      username: root
+      password: s3cr3t
