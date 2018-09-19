@@ -4,5 +4,8 @@ eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
+  instance:
+    hostname: eureka
+    preferIpAddress: false
   server:
     waitTimeInMsWhenSyncEmpty: 0 

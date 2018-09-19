@@ -19,7 +19,7 @@ public class ExampleCouchbase {
 	private static Cluster cluster;
 	private static final String Q_AIRLINES = "SELECT id, name, country FROM `travel-sample` WHERE type = 'airline'";
 	private static Bucket getBucket(String bName, String bPass) {
-		cluster = CouchbaseCluster.create("127.0.0.1:8091");
+		cluster = CouchbaseCluster.create("192.168.99.102:8091");
 		//cluster = CouchbaseCluster.create(System.getenv("couchbase_addr"));
 		return cluster.openBucket(bName, bPass);
 	}
