@@ -2,5 +2,3 @@ spring:
   cloud:
     config:
       uri: http://config-services:8888
-      username: root
-      password: s3cr3t
