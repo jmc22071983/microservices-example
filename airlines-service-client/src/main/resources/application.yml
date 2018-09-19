@@ -1,19 +1,11 @@
 spring:
   application:
     name: airlines-service-client
+  cloud:
+    config:
+      uri: http://config-services:8888
   freemarker:
     enabled: false 
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
-server:
-  port: 8099
-eureka:
-  instance:
-    hostname: eureka
-    preferIpAddress: false
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://eureka:8761/eureka/

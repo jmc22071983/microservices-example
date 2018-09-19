@@ -8,4 +8,4 @@ eureka:
     hostname: eureka
     preferIpAddress: false
   server:
-    waitTimeInMsWhenSyncEmpty: 0 
+    waitTimeInMsWhenSyncEmpty: 0

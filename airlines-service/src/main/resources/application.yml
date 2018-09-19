@@ -1,16 +1,8 @@
 spring:
   application:
     name: airlines-service
-server:
-  port: 8098
-eureka:
-  instance:
-    hostname: eureka
-    preferIpAddress: false
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://eureka:8761/eureka/
+  cloud:
+    config:
+      uri: http://config-services:8888
 
     
