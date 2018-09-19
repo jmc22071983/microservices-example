@@ -6,8 +6,3 @@ spring:
       uri: http://config-services:8888
       username: root
       password: s3cr3t
-  freemarker:
-    enabled: false 
-  thymeleaf:
-    cache: false
-    prefix: classpath:/templates/
