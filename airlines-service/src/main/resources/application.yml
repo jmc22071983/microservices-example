@@ -3,5 +3,5 @@ spring:
     name: airlines-service
   cloud:
     config:
-      uri: http://config-services:8888
+      uri: http://localhost:8888
     
