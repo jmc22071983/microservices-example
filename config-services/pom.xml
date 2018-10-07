@@ -36,9 +36,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency>	
 	</dependencies>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -93,7 +92,7 @@
 							<goal>push</goal>
 						</goals>
 						<configuration>
-							<imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
+							<imageName>${docker.image.prefix}/${project.artifactId}:0.0.1-SNAPSHOT</imageName>
 						</configuration>
 					</execution>
 				</executions>

@@ -1,7 +1,22 @@
 spring:
   application:
-    name: airlines-service
+    name: airlines-service 
+  profiles: default
+  cloud:
+    config:
+      uri: http://localhost:8888
+      
+---
+
+spring:
+  profiles: swarm
   cloud:
     config:
       uri: http://config:8888
-    
+
+---
+spring:
+  profiles: aws
+  cloud:
+    config:
+      uri: http://cloud.r53config.vpc:8888
