@@ -3,4 +3,4 @@ spring:
     name: airlines-service-client
   cloud:
     config:
-      uri: http://config:8888
+      uri: ${SPRING_CONFIG_URI:http://config:8888}
