@@ -1,19 +1,21 @@
 spring:
-    profiles: aws
-server:
-    port: 8761
-eureka:
-  datacenter: cloud
-  client:
-    region: us-west-2
-    availabilityZones:
-      us-west-2: us-west-2a, us-west-2b
-    eurekaServerPort: 8761
-    useDnsForFetchingServiceUrls: true
-    eurekaServerDNSName: r53config.vpc
-    eurekaServerURLContext: eureka
-    registerWithEureka: true
-    fetchRegistry: true
-  server:
-    bindingStrategy: route53
-    route53DomainTTL: 30 
+  application:
+    name: eureka
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+---
+
+spring:
+  profiles: swarm
+  cloud:
+    config:
+      uri: http://config:8888
+
+---
+spring:
+  profiles: aws
+  cloud:
+    config:
+      uri: http://cloud.r53config.vpc
