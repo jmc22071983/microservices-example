@@ -1,4 +1,5 @@
 spring:
+  profiles: default
   application:
     name: eureka
   cloud:
@@ -9,6 +10,8 @@ spring:
 
 spring:
   profiles: swarm
+  application:
+    name: eureka
   cloud:
     config:
       uri: http://config:8888
@@ -16,6 +19,8 @@ spring:
 ---
 spring:
   profiles: aws
+  application:
+    name: eureka
   cloud:
     config:
       uri: http://cloud.r53config.vpc
