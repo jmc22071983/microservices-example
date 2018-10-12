@@ -5,7 +5,11 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> 185c522da665f8b1b9ddc596fd88deab35eba7d9
 ---
 
 spring:
@@ -23,4 +27,9 @@ spring:
     name: airlines-service
   cloud:
     config:
+<<<<<<< HEAD
       uri: http://cloud.r53config.vpc
+      
+=======
+      uri: http://cloud.r53config.vpc
+>>>>>>> 185c522da665f8b1b9ddc596fd88deab35eba7d9
