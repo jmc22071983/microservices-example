@@ -38,12 +38,6 @@ public class EurekaServerApplication {
 		AmazonInfo info = AmazonInfo.Builder.newBuilder().autoBuild("eureka");
 		config.setHostname(info.get(AmazonInfo.MetaDataKey.publicHostname));
 		config.setIpAddress(info.get(AmazonInfo.MetaDataKey.publicIpv4));
-		logger.info("LOCAL HOSTNAME {}, ", info.get(AmazonInfo.MetaDataKey.localHostname)); 
-		logger.info("LOCAL IP {} ", info.get(AmazonInfo.MetaDataKey.localIpv4));
-		logger.info("PUBLIC HOSTNAME {}, ", info.get(AmazonInfo.MetaDataKey.publicHostname));
-		logger.info("PUBLIC IP {}, ", info.get(AmazonInfo.MetaDataKey.publicIpv4));
-		logger.info("availabilityZone {}, " , info.get(AmazonInfo.MetaDataKey.availabilityZone));
-		config.setNonSecurePort(port); config.setDataCenterInfo(info);
 		return config;
 	}
 	
