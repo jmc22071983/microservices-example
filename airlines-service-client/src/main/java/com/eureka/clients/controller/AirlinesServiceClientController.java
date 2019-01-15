@@ -6,17 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.eureka.clients.ClientAirlinesService;
+import com.eureka.clients.IClientAirlinesService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //@Controller For thymeleaf view
 @RestController
 public class AirlinesServiceClientController {
-	
+	/*
 	@Autowired
 	private DiscoveryClient discoveryClient;
 	
@@ -43,6 +47,9 @@ public class AirlinesServiceClientController {
 	public String allAirlines() {
 		return airlineTest.allAirlines();
 	}
+	
+	
+	
 	
 	@RequestMapping(value="/service-instances/{applicationName}", method = RequestMethod.GET)
 	public List<ServiceInstance> serviceInstancesByApplicationName( @PathVariable String applicationName) {
@@ -81,5 +88,22 @@ public class AirlinesServiceClientController {
  
         return html;
     }
-
+*/
+    private static final Logger LOGGER = LoggerFactory.getLogger(AirlinesServiceClientController.class);
+	
+	@Autowired
+	IClientAirlinesService clientAirlinesService;
+	
+	@GetMapping("/print-all-airlines")
+	public String allAirlines() {
+		LOGGER.info("printing all airlines");
+		return clientAirlinesService.allAirlines();
+	}
+	
+	@GetMapping("/airline-datail/{name}")
+	public String airline(@PathVariable ("name") String name) {
+		LOGGER.info("getting  airline detail");
+		return clientAirlinesService.airlines(name);
+	}
+	
 }

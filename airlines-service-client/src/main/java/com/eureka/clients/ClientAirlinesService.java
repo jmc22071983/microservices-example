@@ -3,7 +3,7 @@ package com.eureka.clients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
+/*
 @Service
 public class ClientAirlinesService {
 	@Autowired
@@ -28,4 +28,9 @@ public class ClientAirlinesService {
 	public String test() {
 		return restTemplate.getForObject(serviceUrl + "/test", String.class);
 	}
+}
+*/
+
+public class ClientAirlinesService {
+	
 }

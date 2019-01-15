@@ -17,7 +17,7 @@ import com.netflix.appinfo.AmazonInfo;
 @SpringBootApplication
 public class AirlinesApplication {
 	private static final Logger logger = LoggerFactory.getLogger(AirlinesApplication.class);
-	@Profile("default")
+	@Profile({ "default", "swarm" })
 	public static void main(String[] args) {
 		SpringApplication.run(AirlinesApplication.class, args);
 	}
