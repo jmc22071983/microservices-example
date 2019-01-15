@@ -86,7 +86,7 @@ public class AirlinesServiceClientApplication {
 					.apis(RequestHandlerSelectors.basePackage("com.eureka.clients.controller"))
 					.paths(PathSelectors.any())
 				.build()
-				.apiInfo(new ApiInfoBuilder().version("1.0").title("AIRLINES CLIENT API").description("Documentation Airlines API v1.0").build());
+				.apiInfo(new ApiInfoBuilder().version("1.0").title("AIRLINES API").description("Documentation Airlines API v1.0").build());
 	}
 	
 	

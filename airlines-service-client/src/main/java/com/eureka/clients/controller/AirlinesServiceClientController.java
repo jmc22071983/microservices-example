@@ -2,6 +2,8 @@ package com.eureka.clients.controller;
 
 import java.util.List;
 
+import javax.ws.rs.Produces;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -14,11 +16,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.eureka.clients.IClientAirlinesService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 //@Controller For thymeleaf view
 @RestController
+@Api(value="Airlines client service", tags = {"airlines_info","airline_info"})
+@Produces({"application/json", "application/xml"})
 public class AirlinesServiceClientController {
 	/*
 	@Autowired
@@ -94,6 +101,7 @@ public class AirlinesServiceClientController {
 	@Autowired
 	IClientAirlinesService clientAirlinesService;
 	
+	@ApiOperation(value = "Get all airlines details")
 	@GetMapping("/print-all-airlines")
 	public String allAirlines() {
 		LOGGER.info("printing all airlines");
