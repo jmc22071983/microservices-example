@@ -1,4 +1,4 @@
-package com.hotels.controller;
+package com.airports.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,34 +27,32 @@ import com.couchbase.client.java.subdoc.DocumentFragment;
 import com.google.gson.Gson;
 
 @RestController
-public class HotelsController {
+public class AirportsController {
 	private static final Gson gson = new Gson();
 	private static Cluster cluster;
-	private static final Logger LOGGER = LoggerFactory.getLogger(HotelsController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AirportsController.class);
 	private static final String TRAVEL_SAMPLE = "travel-sample";
 	private static final String PASS = "sysadmin";
-	private static final String Q_HOTELS = "SELECT country, city, address, name, phone FROM `travel-sample` WHERE type = 'hotel'";
-	
+	private static final String Q_AIRPORTS = "SELECT id, airportname, city, country, geo FROM `travel-sample` WHERE type = 'airport'";
 	private static Bucket openBucket(String bucketName) {
 		cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
 		//cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
 		return cluster.openBucket(bucketName, PASS);
 	}
 	
-	
-	@GetMapping("/all-hotels")
-	public static String allHotels() {
+	@RequestMapping(value="/all-airports", method = RequestMethod.GET)
+	public static String allAirports() {
 		Bucket bucket = openBucket(TRAVEL_SAMPLE);
 		bucket.bucketManager().createN1qlPrimaryIndex(true, false);	
-		N1qlQueryResult result = bucket.query(N1qlQuery.simple(Q_HOTELS));
+		N1qlQueryResult result = bucket.query(N1qlQuery.simple(Q_AIRPORTS));
         cluster.disconnect();
 		return gson.toJson(result.allRows().toString());
 	}
 	
-	@GetMapping("/search-hotel-by-location")
-	public String hotelByLocation(@RequestParam String location) {  
+	@GetMapping("/search-airport-by-location")
+	public String airportByLocation(@RequestParam String location) {  
 		List<Map<String,String>> sresult = new ArrayList<>();
-		ConjunctionQuery fts = SearchQuery.conjuncts(SearchQuery.term("hotel").field("type"));
+		ConjunctionQuery fts = SearchQuery.conjuncts(SearchQuery.term("airport").field("type"));
 	    fts.and(
 	    		SearchQuery.disjuncts(
 	    		SearchQuery.matchPhrase(location).field("country"),
@@ -67,33 +65,21 @@ public class HotelsController {
 	    for (SearchQueryRow row : result) {
 	        DocumentFragment<Lookup> fragment = bucket
 	                .lookupIn(row.id())
-	                .get("country")
+	                .get("airportname")
 	                .get("city")
-	                .get("name")
-	                .get("phone")
-	                .get("address")	             
 	                .execute();
 	        Map<String,String> map = new HashMap<>();
 	        map.put("id",row.id());
 	        if(fragment.content(0) != null) {
-	            map.put("country", fragment.content(0).toString());
+	        	 map.put("airportname", fragment.content(0).toString());	
 	        }
 	        if(fragment.content(1) != null) {
 	        	 map.put("city", fragment.content(1).toString());
 	        }
-	        if(fragment.content(2) != null) {
-	        	 map.put("name", fragment.content(2).toString());
-	        }
-	        if(fragment.content(3) != null) {
-	        	 map.put("phone", fragment.content(3).toString());
-	        }
-	        if(fragment.content(4) != null) {
-	        	 map.put("address", fragment.content(4).toString());
-	        }
+	       
 	        sresult.add(map);
 	    }
+	   
 	    return  gson.toJson(sresult);
 	}
-	
 }
-	
