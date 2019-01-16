@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.couchbase.client.core.message.kv.subdoc.multi.Lookup;
-import com.couchbase.client.deps.com.fasterxml.jackson.databind.ser.impl.PropertySerializerMap.SerializerAndMapResult;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
 import com.couchbase.client.java.CouchbaseCluster;
@@ -28,10 +27,10 @@ import com.couchbase.client.java.subdoc.DocumentFragment;
 import com.google.gson.Gson;
 
 @RestController
-public class ExampleCouchbase {
+public class AirlinesController {
 	private static final Gson gson = new Gson();
 	private static Cluster cluster;
-	private static final Logger LOGGER = LoggerFactory.getLogger(ExampleCouchbase.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AirlinesController.class);
 	private static final String TRAVEL_SAMPLE = "travel-sample";
 	private static final String BEER_SAMPLE = "beer-sample";
 	private static final String PASS = "sysadmin";
