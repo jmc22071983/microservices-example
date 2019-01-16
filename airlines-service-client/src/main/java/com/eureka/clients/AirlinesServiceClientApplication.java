@@ -23,6 +23,8 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger.web.UiConfiguration;
+import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /*
@@ -87,6 +89,11 @@ public class AirlinesServiceClientApplication {
 					.paths(PathSelectors.any())
 				.build()
 				.apiInfo(new ApiInfoBuilder().version("1.0").title("AIRLINES API").description("Documentation Airlines API v1.0").build());
+	}
+	
+	@Bean
+	  UiConfiguration uiConfig() {
+	    return UiConfigurationBuilder.builder().validatorUrl(null).build();
 	}
 	
 	

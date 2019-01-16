@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 
 //@Controller For thymeleaf view
 @RestController
-@Api(value="Airlines client service", tags = {"airlines_info","airline_info"})
+@Api(value="Airlines client service", tags = {"Airlines Info"})
 @Produces({"application/json", "application/xml"})
 public class AirlinesServiceClientController {
 	/*
@@ -101,7 +101,8 @@ public class AirlinesServiceClientController {
 	@Autowired
 	IClientAirlinesService clientAirlinesService;
 	
-	@ApiOperation(value = "Get all airlines details")
+	
+	@ApiOperation(value = "Get all airlines details", produces="application/json")
 	@GetMapping("/print-all-airlines")
 	public String allAirlines() {
 		LOGGER.info("printing all airlines");
