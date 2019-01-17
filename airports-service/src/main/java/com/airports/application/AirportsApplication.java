@@ -13,8 +13,11 @@ import org.springframework.context.annotation.Profile;
 
 import com.netflix.appinfo.AmazonInfo;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @EnableEurekaClient //this enables service registration and discovery. In this case, this process registers itself with the discovery-server service using its application name 
 @SpringBootApplication
+@EnableSwagger2
 public class AirportsApplication {
 	private static final Logger logger = LoggerFactory.getLogger(AirportsApplication.class);
 	@Profile({ "default", "swarm" })

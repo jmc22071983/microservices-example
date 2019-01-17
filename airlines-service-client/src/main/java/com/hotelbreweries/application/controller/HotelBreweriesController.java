@@ -4,6 +4,7 @@ import javax.ws.rs.Produces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hotelbreweries.application.IClientBreweriesService;
@@ -15,8 +16,8 @@ import org.slf4j.LoggerFactory;
 
 //@Controller For thymeleaf view
 @RestController
-@Api(value="Airlines client service", tags = {"Airlines Info"})
-@Produces({"application/json", "application/xml"})
+@Api(value="Find Breweries near the  hotel", tags = {"Breweries Info"})
+@Produces({"application/json"})
 public class HotelBreweriesController {
 	
     private static final Logger LOGGER = LoggerFactory.getLogger(HotelBreweriesController.class);
@@ -29,16 +30,23 @@ public class HotelBreweriesController {
 	
 	
 
-	@ApiOperation(value = "Get hotel location", produces="application/json")
-	@GetMapping("/hotel-location/{location}")
+	@ApiOperation(value = "Get hotel location - Return city", produces="application/json")
+	@GetMapping("/hotels/location/{location}")
 	public String hotels(@PathVariable ("location") String location) {
-		return iClientHotelsService.hotelLocation(location);
+		return iClientHotelsService.retrieveHotelsLocation(location);
 	}
 	
 	@ApiOperation(value = "Get Breweries by an hotel location", produces="application/json")
-	@GetMapping("/breweries-location/{location}")
-	public String breweries(@PathVariable ("location") String location) {
+	@GetMapping("/breweries/location/{location}")
+	public String breweriesByLocation(@PathVariable ("location") String location) {
 		return iClientBreweriesService.findBreweries(location);
+	}
+	
+	@ApiOperation(value = "Breweries near the city", produces="application/json")
+	@GetMapping("/breweries")
+	public String breweries(@RequestParam String hotelName) {	
+		String city = iClientHotelsService.hotelLocation(hotelName);
+		return iClientBreweriesService.findBreweries(city);
 	}
 	
 }

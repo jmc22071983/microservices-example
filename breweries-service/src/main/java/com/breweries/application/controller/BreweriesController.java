@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.ws.rs.Produces;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +29,12 @@ import com.couchbase.client.java.search.result.SearchQueryRow;
 import com.couchbase.client.java.subdoc.DocumentFragment;
 import com.google.gson.Gson;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@Api(value="Breweries Service", tags = {"Breweries Info"})
+@Produces({"application/json"})
 public class BreweriesController {
 	private static final Gson gson = new Gson();
 	private static Cluster cluster;
@@ -41,6 +49,7 @@ public class BreweriesController {
 	}
 	
 	@GetMapping("/search-breweries-by-location")
+	@ApiOperation(value = "Find breweries by location", produces="application/json")
 	public String findBreweries(@RequestParam String location) {  
 		List<Map<String,String>> sresult = new ArrayList<>();
 		ConjunctionQuery fts = SearchQuery.conjuncts(SearchQuery.term("brewery").field("type"));

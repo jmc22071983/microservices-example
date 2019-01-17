@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.ws.rs.Produces;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +29,12 @@ import com.couchbase.client.java.search.result.SearchQueryRow;
 import com.couchbase.client.java.subdoc.DocumentFragment;
 import com.google.gson.Gson;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@Api(value="Airports Service", tags = {"Airports Info"})
+@Produces({"application/json"})
 public class AirportsController {
 	private static final Gson gson = new Gson();
 	private static Cluster cluster;
@@ -40,7 +48,8 @@ public class AirportsController {
 		return cluster.openBucket(bucketName, PASS);
 	}
 	
-	@RequestMapping(value="/all-airports", method = RequestMethod.GET)
+	@RequestMapping(value="/airports", method = RequestMethod.GET)
+	@ApiOperation(value = "Get all airports", produces="application/json")
 	public static String allAirports() {
 		Bucket bucket = openBucket(TRAVEL_SAMPLE);
 		bucket.bucketManager().createN1qlPrimaryIndex(true, false);	
@@ -49,7 +58,8 @@ public class AirportsController {
 		return result.allRows().toString();
 	}
 	
-	@GetMapping("/search-airport-by-location")
+	@GetMapping("/search-airport")
+	@ApiOperation(value = "Search airport by location", produces="application/json")
 	public String airportByLocation(@RequestParam String location) {  
 		List<Map<String,String>> sresult = new ArrayList<>();
 		ConjunctionQuery fts = SearchQuery.conjuncts(SearchQuery.term("airport").field("type"));
@@ -60,7 +70,7 @@ public class AirportsController {
 	    		)
 	    		);
 	    Bucket bucket = openBucket(TRAVEL_SAMPLE);
-	    SearchQuery query = new SearchQuery("airport", fts).limit(100);
+	    SearchQuery query = new SearchQuery("travel", fts).limit(100);
 	    SearchQueryResult result = bucket.query(query);	   
 	    for (SearchQueryRow row : result) {
 	        DocumentFragment<Lookup> fragment = bucket

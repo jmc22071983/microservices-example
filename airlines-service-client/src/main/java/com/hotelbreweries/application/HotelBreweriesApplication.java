@@ -6,24 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.commons.util.InetUtils;
 import org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
-import org.springframework.web.client.RestTemplate;
 import com.netflix.appinfo.AmazonInfo;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger.web.UiConfiguration;
-import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -33,14 +22,14 @@ public class HotelBreweriesApplication {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HotelBreweriesApplication.class);
 	
-	@Bean
+/*	@Bean
 	public Docket swaggerPersonApi10() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-					.apis(RequestHandlerSelectors.basePackage("com.hotelbreweries.application.controller"))
+					.apis(RequestHandlerSelectors.any())
 					.paths(PathSelectors.any())
 				.build()
-				.apiInfo(new ApiInfoBuilder().version("1.0").title("AIRLINES API").description("Documentation Airlines API v1.0").build());
+				.apiInfo(new ApiInfoBuilder().version("1.0").title("TRAVL SAMPLE API").description("Travel Airlines API v1.0").build());
 	}
 	
 	@Bean
@@ -48,7 +37,7 @@ public class HotelBreweriesApplication {
 	    return UiConfigurationBuilder.builder().validatorUrl(null).build();
 	}
 	
-	
+	*/
 	@Profile({ "default", "swarm" })
 	public static void main(String[] args) {
 		SpringApplication.run(HotelBreweriesApplication.class, args);

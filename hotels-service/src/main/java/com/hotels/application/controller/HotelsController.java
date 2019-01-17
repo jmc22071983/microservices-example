@@ -4,19 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ws.rs.Produces;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.couchbase.client.core.message.kv.subdoc.multi.Lookup;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
 import com.couchbase.client.java.CouchbaseCluster;
-import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.query.N1qlQuery;
 import com.couchbase.client.java.query.N1qlQueryResult;
 import com.couchbase.client.java.search.SearchQuery;
@@ -26,7 +23,12 @@ import com.couchbase.client.java.search.result.SearchQueryRow;
 import com.couchbase.client.java.subdoc.DocumentFragment;
 import com.google.gson.Gson;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@Api(value="Find Hotels", tags = {"Hotels Info"})
+@Produces({"application/json"})
 public class HotelsController {
 	private static final Gson gson = new Gson();
 	private static Cluster cluster;
@@ -42,7 +44,8 @@ public class HotelsController {
 	}
 	
 	
-	@GetMapping("/all-hotels")
+	@GetMapping("/hotels")
+	@ApiOperation(value = "Get all hotels", produces="application/json")
 	public static String allHotels() {
 		Bucket bucket = openBucket(TRAVEL_SAMPLE);
 		bucket.bucketManager().createN1qlPrimaryIndex(true, false);	
@@ -51,7 +54,8 @@ public class HotelsController {
 		return result.allRows().toString();
 	}
 	
-	@GetMapping("/search-hotel-by-location")
+	@GetMapping("/search-hotels-by-location")
+	@ApiOperation(value = "Search hotels by location", produces="application/json")
 	public String hotelByLocation(@RequestParam String location) {  
 		List<Map<String,String>> sresult = new ArrayList<>();
 		ConjunctionQuery fts = SearchQuery.conjuncts(SearchQuery.term("hotel").field("type"));
@@ -62,7 +66,7 @@ public class HotelsController {
 	    		)
 	    		);
 	    Bucket bucket = openBucket(TRAVEL_SAMPLE);
-	    SearchQuery query = new SearchQuery("airport", fts).limit(100);
+	    SearchQuery query = new SearchQuery("travel", fts).limit(100);
 	    SearchQueryResult result = bucket.query(query);	   
 	    for (SearchQueryRow row : result) {
 	        DocumentFragment<Lookup> fragment = bucket
@@ -93,6 +97,31 @@ public class HotelsController {
 	        sresult.add(map);
 	    }
 	    return  gson.toJson(sresult);
+	}
+	
+	
+	@GetMapping("/retrive-location-by-hotel-name")
+	@ApiOperation(value = "Retrieve city from hotel name", produces="application/json")
+	public String retrieveCityFromHotelName(@RequestParam String hotelName) {  
+		ConjunctionQuery fts = SearchQuery.conjuncts(SearchQuery.term("hotel").field("type"));
+	    fts.and(
+	    		SearchQuery.disjuncts(
+	    		SearchQuery.matchPhrase(hotelName).field("name")
+	    		)
+	    		);
+	    Bucket bucket = openBucket(TRAVEL_SAMPLE);
+	    SearchQuery query = new SearchQuery("travel", fts).limit(100);
+	    SearchQueryResult result = bucket.query(query);	   
+	    for (SearchQueryRow row : result) {
+	        DocumentFragment<Lookup> fragment = bucket
+	                .lookupIn(row.id())
+	                .get("city")	              
+	                .execute();	   
+	        if(fragment.content(0) != null) {
+	        	 return fragment.content(0).toString();
+	        }
+	    }
+	    return  null;
 	}
 	
 }
