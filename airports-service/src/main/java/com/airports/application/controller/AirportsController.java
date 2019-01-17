@@ -1,4 +1,4 @@
-package com.airports.controller;
+package com.airports.application.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +46,7 @@ public class AirportsController {
 		bucket.bucketManager().createN1qlPrimaryIndex(true, false);	
 		N1qlQueryResult result = bucket.query(N1qlQuery.simple(Q_AIRPORTS));
         cluster.disconnect();
-		return gson.toJson(result.allRows().toString());
+		return result.allRows().toString();
 	}
 	
 	@GetMapping("/search-airport-by-location")

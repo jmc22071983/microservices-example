@@ -1,7 +1,7 @@
 spring:
   profiles: default
   application:
-    name: airlines-service
+    name: hotels-service
   cloud:
     config:
       uri: http://localhost:8888
@@ -11,7 +11,7 @@ spring:
 spring:
   profiles: swarm
   application:
-    name: airlines-service
+    name: hotels-service
   cloud:
     config:
       uri: http://config:8888
@@ -20,7 +20,7 @@ spring:
 spring:
   profiles: aws
   application:
-    name: airlines-service
+    name: hotels-service
   cloud:
     config:
       uri: http://cloud.r53config.vpc
