@@ -18,7 +18,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@Api(value="Airlines Service", tags = {"Airlines Info"})
+@Api(value="Airlines Service", tags = {"Airlines API Endpoints"})
 @Produces({"application/json"})
 public class AirlinesController {
 	private static Cluster cluster;

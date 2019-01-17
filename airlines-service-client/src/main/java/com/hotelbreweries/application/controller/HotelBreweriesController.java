@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 //@Controller For thymeleaf view
 @RestController
-@Api(value="Find Breweries near the  hotel", tags = {"Breweries Info"})
+@Api(value="Find Breweries near the  hotel", tags = {"Breweries API Endpoints"})
 @Produces({"application/json"})
 public class HotelBreweriesController {
 	

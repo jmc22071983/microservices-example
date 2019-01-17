@@ -27,7 +27,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@Api(value="Find Hotels", tags = {"Hotels Info"})
+@Api(value="Find Hotels", tags = {"Hotels API Endpoints"})
 @Produces({"application/json"})
 public class HotelsController {
 	private static final Gson gson = new Gson();

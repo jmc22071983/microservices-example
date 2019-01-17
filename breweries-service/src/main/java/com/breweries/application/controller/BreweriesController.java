@@ -33,7 +33,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@Api(value="Breweries Service", tags = {"Breweries Info"})
+@Api(value="Breweries Service", tags = {"Breweries API Endpoints"})
 @Produces({"application/json"})
 public class BreweriesController {
 	private static final Gson gson = new Gson();
