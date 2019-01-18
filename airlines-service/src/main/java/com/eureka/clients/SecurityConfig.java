@@ -13,7 +13,18 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @EnableWebSecurity
 @Order(1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
- 
+	private static final String[] SWAGGER_AUTH_WHITELIST = {
+            // -- swagger ui
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**"
+            // other public endpoints of your API may be appended to this array
+    };
+	
    @Autowired
    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
        auth.inMemoryAuthentication().withUser("eureka")
@@ -22,14 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  
    @Override
    protected void configure(HttpSecurity http) throws Exception {
-       http
+	   http
+       .csrf().disable()
        .authorizeRequests()
-           .antMatchers("/airlines/**").permitAll()
-           .antMatchers("/eureka/**").hasRole("ADMIN")
-           .anyRequest().authenticated()
-           .and()
-       .logout()
-           .and()
-       .csrf().disable();
+       .antMatchers("/airlines/**").permitAll()
+       .antMatchers(SWAGGER_AUTH_WHITELIST).permitAll()
+       .antMatchers("*").hasRole("SYSTEM")
+       .anyRequest().authenticated()
+       .and().httpBasic();
+	   http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
    }
+   
+   
 }
