@@ -17,7 +17,7 @@ import com.netflix.appinfo.AmazonInfo;
 
 @EnableEurekaServer
 @SpringBootApplication
-@EnableDiscoveryClient
+
 public class EurekaServerApplication {
 	private static final Logger logger = LoggerFactory.getLogger(EurekaServerApplication.class);
 

@@ -4,8 +4,9 @@ spring:
     name: eureka
   cloud:
     config:
+      username: admin
+      password: password
       uri: http://localhost:8888
-
 ---
 
 spring:
@@ -15,6 +16,8 @@ spring:
   cloud:
     config:
       uri: http://config:8888
+      username: admin
+      password: password
 
 ---
 spring:
@@ -24,3 +27,5 @@ spring:
   cloud:
     config:
       uri: http://cloud.r53config.vpc
+      username: admin
+      password: password

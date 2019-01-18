@@ -4,6 +4,8 @@ spring:
     name: breweries-service
   cloud:
     config:
+      username: admin
+      password: password
       uri: http://localhost:8888
       
 ---
@@ -14,6 +16,8 @@ spring:
     name: breweries-service
   cloud:
     config:
+      username: admin
+      password: password
       uri: http://config:8888
 
 ---
