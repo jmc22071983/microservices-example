@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+
 
 @Configuration
 @EnableWebSecurity
@@ -21,18 +23,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  
    @Override
    protected void configure(HttpSecurity http) throws Exception {
-       http
-       .authorizeRequests()
-           .antMatchers("/airlines-api/**").permitAll()
-           .antMatchers("/airports-api/**").permitAll()
-           .antMatchers("/hotels-api/**").permitAll()
-           .antMatchers("/breweries-api/**").permitAll()
-           .antMatchers("/hotel-breweries-api/**").permitAll() 
-           .antMatchers("/eureka/**").hasRole("ADMIN")
-           .anyRequest().authenticated()
-           .and()
-       .logout()
-           .and()
-       .csrf().disable();
+	   http
+       .csrf().disable()
+       .authorizeRequests().antMatchers("*").hasRole("USER")
+       .anyRequest().authenticated()
+       .and().httpBasic();
+	   http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
    }
 }
