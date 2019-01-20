@@ -16,18 +16,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  
    @Autowired
    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-       auth.inMemoryAuthentication().withUser("eureka")
-         .password("{noop}eurekapass").roles("SYSTEM");
+       auth.inMemoryAuthentication()
+      .withUser("eureka").password("{noop}eurekapass").roles("SYSTEM","USER","ADMIN");
    }
  
    @Override
    protected void configure(HttpSecurity http) throws Exception {
-       http
-       .csrf().disable()
-       .authorizeRequests()
-       .antMatchers("*").hasRole("SYSTEM")
-       .anyRequest().authenticated()
-       .and().httpBasic();
-	   http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+	   http
+	   .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
+	   .and().requestMatchers().antMatchers("/eureka/**")
+	   .and().authorizeRequests().antMatchers("/eureka/**").hasRole("SYSTEM")
+	   .anyRequest().denyAll()
+	   .and().httpBasic().and().csrf()
+	   .disable();
+	   
    }
 }

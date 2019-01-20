@@ -10,6 +10,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.session.web.http.HeaderHttpSessionStrategy;
+import org.springframework.session.web.http.HttpSessionStrategy;
 
 import com.netflix.appinfo.AmazonInfo;
 
@@ -20,6 +22,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class AirlinesApplication {
 	private static final Logger logger = LoggerFactory.getLogger(AirlinesApplication.class);
+	
+	@Bean
+	public HttpSessionStrategy httpSessionStrategy() {
+		return new HeaderHttpSessionStrategy(); 
+	}
+	
+	
 	@Profile({ "default", "swarm" })
 	public static void main(String[] args) {
 		SpringApplication.run(AirlinesApplication.class, args);

@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.http.HttpMethod;
 
 @Configuration
 @EnableWebSecurity
@@ -25,20 +26,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
    @Autowired
    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-       auth.inMemoryAuthentication().withUser("eureka")
-         .password("{noop}eurekapass").roles("SYSTEM");
+       auth.inMemoryAuthentication();
    }
  
    @Override
    protected void configure(HttpSecurity http) throws Exception {
-	   http
+	http
+	   .httpBasic() .disable()
        .csrf().disable()
        .authorizeRequests()
-       .antMatchers("/airlines/**").permitAll()
+       .antMatchers(HttpMethod.GET,"/airlines/**").permitAll()
        .antMatchers(SWAGGER_AUTH_WHITELIST).permitAll()
        .antMatchers("*").hasRole("SYSTEM")
-       .anyRequest().authenticated()
-       .and().httpBasic();
+       .anyRequest().authenticated();
+	   http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
    }
    
    

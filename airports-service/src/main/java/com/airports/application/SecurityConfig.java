@@ -31,13 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    @Override
    protected void configure(HttpSecurity http) throws Exception {
 	   http
+	   .httpBasic().disable()
        .csrf().disable()
        .authorizeRequests()
        .antMatchers("/airports/**", "/search-airport/**").permitAll()
        .antMatchers(SWAGGER_AUTH_WHITELIST).permitAll()
        .antMatchers("*").hasRole("SYSTEM")
-       .anyRequest().authenticated()
-       .and().httpBasic();
-	   http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+       .anyRequest().authenticated();
    }
 }
