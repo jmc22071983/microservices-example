@@ -28,6 +28,7 @@ public class ZuulPreFilter extends ZuulFilter {
        // Session session = repository.getSession(httpSession.getId());
         log.info("SESSION ID: {}", httpSession.getId());
         context.addZuulRequestHeader( "Cookie", "SESSION=" + httpSession.getId());
+        context.addZuulRequestHeader( "Set-Cookie", "SESSION=" + httpSession.getId());
         return null;
     }
  

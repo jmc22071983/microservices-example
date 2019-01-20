@@ -40,6 +40,11 @@ public class AirlinesController {
 		return cluster.openBucket(bucketName, PASS);
 	}
 	
+	@RequestMapping(value="/session-for-air", method = RequestMethod.GET)
+	public static String sessionAir(HttpSession session) {
+		LOGGER.info("SESSION ID...{}",session.getId()) ;
+		return session.getId();
+	}
 	
 	@ApiOperation(value = "Get all airlines", produces="application/json")
 	@RequestMapping(value="/airlines", method = RequestMethod.GET)
