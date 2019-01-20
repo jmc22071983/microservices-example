@@ -39,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        .antMatchers("*").hasRole("SYSTEM")
        .anyRequest().authenticated()
        .and().httpBasic();
-	   http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
    }
    
    
