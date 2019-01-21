@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	http
        .csrf().disable()
        .authorizeRequests()
-       .antMatchers(HttpMethod.GET,"/airlines/**","/session-for-air").permitAll()
+       .antMatchers(HttpMethod.GET,"/airlines/**").permitAll()
        .antMatchers(SWAGGER_AUTH_WHITELIST).permitAll()
        .antMatchers("*").hasRole("SYSTEM")
        .anyRequest().authenticated();
