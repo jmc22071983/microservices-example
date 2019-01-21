@@ -12,8 +12,7 @@ import org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
-import org.springframework.session.web.http.HeaderHttpSessionStrategy;
-import org.springframework.session.web.http.HttpSessionStrategy;
+
 
 import com.netflix.appinfo.AmazonInfo;
 
@@ -29,11 +28,6 @@ public class EurekaServerApplication {
 	@Profile("default")
 	public static void main(String[] args) {
 		SpringApplication.run(EurekaServerApplication.class, args);
-	}
-	
-	@Bean
-	public HttpSessionStrategy httpSessionStrategy() {
-		return new HeaderHttpSessionStrategy(); 
 	}
 
 	@Bean

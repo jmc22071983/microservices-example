@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
+
+
 @Configuration
 @EnableWebSecurity
 @Order(1)
@@ -16,8 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  
    @Autowired
    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-       auth.inMemoryAuthentication()
-      .withUser("eureka").password("{noop}eurekapass").roles("SYSTEM","USER","ADMIN");
+	   auth.inMemoryAuthentication().withUser("eureka").password("{noop}eurekapass").roles("SYSTEM");
    }
  
    @Override
@@ -32,3 +33,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	   
    }
 }
+
