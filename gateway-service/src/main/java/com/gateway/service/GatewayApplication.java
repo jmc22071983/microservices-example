@@ -13,7 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableZuulProxy
 @EnableDiscoveryClient
 @EnableSwagger2
-@EnableRedisHttpSession(redisFlushMode = RedisFlushMode.IMMEDIATE)
 public class GatewayApplication {
 
 	public static void main(String[] args) {

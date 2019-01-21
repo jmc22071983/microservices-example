@@ -20,7 +20,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableEurekaClient //this enables service registration and discovery. In this case, this process registers itself with the discovery-server service using its application name 
 @SpringBootApplication
 @EnableSwagger2
-@EnableRedisHttpSession(redisFlushMode = RedisFlushMode.IMMEDIATE)
 public class AirlinesApplication {
 	private static final Logger logger = LoggerFactory.getLogger(AirlinesApplication.class);
 	

@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.trace.http.HttpTrace.Request;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.session.data.redis.RedisFlushMode;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @Api(value="Airlines Service", tags = {"Airlines API Endpoints"})
 @Produces({"application/json"})
+@EnableRedisHttpSession(redisFlushMode = RedisFlushMode.IMMEDIATE)
 public class AirlinesController {
 	private static Cluster cluster;
 	private static final Logger LOGGER = LoggerFactory.getLogger(AirlinesController.class);
