@@ -15,8 +15,3 @@ import org.springframework.session.web.http.HttpSessionIdResolver;
 public class SessionConfig extends AbstractHttpSessionApplicationInitializer {
 
 }
-
-/*
-public class SessionConfig{
-	
-}*/

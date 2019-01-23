@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     };
    @Autowired
    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-       auth.inMemoryAuthentication().withUser("eureka").password("{noop}eurekapass").roles("SYSTEM");
+	   auth.inMemoryAuthentication();
    }
  
    @Override
