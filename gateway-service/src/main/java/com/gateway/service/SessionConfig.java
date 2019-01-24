@@ -1,5 +1,6 @@
 package com.gateway.service;
 
+/*
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
@@ -14,4 +15,8 @@ import org.springframework.session.web.http.HttpSessionIdResolver;
 @EnableRedisHttpSession(redisFlushMode = RedisFlushMode.IMMEDIATE)
 public class SessionConfig extends AbstractHttpSessionApplicationInitializer {
 
+}
+*/
+public class SessionConfig {
+	
 }
