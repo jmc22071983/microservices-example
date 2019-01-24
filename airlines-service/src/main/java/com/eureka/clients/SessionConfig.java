@@ -1,5 +1,5 @@
 package com.eureka.clients;
-
+/*
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.session.data.redis.RedisFlushMode;
@@ -14,9 +14,9 @@ import org.springframework.session.web.http.HttpSessionIdResolver;
 public class SessionConfig extends AbstractHttpSessionApplicationInitializer {
 	
 }
+*/
 
 
-/*
 public class SessionConfig{
 	
-}*/
+}
