@@ -1,5 +1,5 @@
 package com.gateway.service;
-
+/*
 import com.google.common.net.HttpHeaders;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -45,4 +45,8 @@ public class ZuulPosFilter extends ZuulFilter {
  	
 		return null;
 	}
+}
+*/
+public class ZuulPosFilter{
+	
 }

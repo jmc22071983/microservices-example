@@ -1,5 +1,5 @@
 package com.gateway.service;
-
+/*
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -40,4 +40,8 @@ public class RouteFilter extends ZuulFilter{
 
 		
 	}
+}
+*/
+public class RouteFilter{
+	
 }
