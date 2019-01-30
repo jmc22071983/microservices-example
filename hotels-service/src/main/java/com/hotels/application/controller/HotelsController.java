@@ -39,7 +39,7 @@ public class HotelsController {
 	
 	private static Bucket openBucket(String bucketName) {
 		cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
-		//cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
+		cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
 		return cluster.openBucket(bucketName, PASS);
 	}
 	
@@ -100,7 +100,7 @@ public class HotelsController {
 	}
 	
 	
-	@GetMapping("/retrive-location-by-hotel-name")
+	@GetMapping("/retrieve-location-by-hotel-name")
 	@ApiOperation(value = "Retrieve city from hotel name", produces="application/json")
 	public String retrieveCityFromHotelName(@RequestParam String hotelName) {  
 		ConjunctionQuery fts = SearchQuery.conjuncts(SearchQuery.term("hotel").field("type"));

@@ -22,22 +22,6 @@ public class HotelBreweriesApplication {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HotelBreweriesApplication.class);
 	
-/*	@Bean
-	public Docket swaggerPersonApi10() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-					.apis(RequestHandlerSelectors.any())
-					.paths(PathSelectors.any())
-				.build()
-				.apiInfo(new ApiInfoBuilder().version("1.0").title("TRAVL SAMPLE API").description("Travel Airlines API v1.0").build());
-	}
-	
-	@Bean
-	  UiConfiguration uiConfig() {
-	    return UiConfigurationBuilder.builder().validatorUrl(null).build();
-	}
-	
-	*/
 	@Profile({ "default", "swarm" })
 	public static void main(String[] args) {
 		SpringApplication.run(HotelBreweriesApplication.class, args);

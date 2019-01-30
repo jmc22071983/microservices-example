@@ -27,19 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	   http
        .csrf().disable()
        .authorizeRequests()
-       .antMatchers("*").hasRole("SYSTEM")
-       .antMatchers("/airlines-api/**").permitAll()
-       .antMatchers("/airports-api/**").permitAll()
-       .antMatchers("/breweries-api/**").permitAll()
-       .antMatchers("/hotels-api/**").permitAll()
-       .antMatchers("/hotel-breweries-api/**").permitAll()
-       .antMatchers("/session/**").permitAll()
-       .antMatchers("/session-for/**").permitAll()
        .anyRequest().authenticated()
        .and().formLogin()
        .and().logout();
-     /*  .and()
-       .csrf()
-       .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());;*/
+
    }
 }

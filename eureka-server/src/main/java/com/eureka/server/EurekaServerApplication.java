@@ -22,7 +22,7 @@ public class EurekaServerApplication {
 	@Value("${server.port:8761}")
 	private int port;
 
-	@Profile("default")
+	@Profile({"default", "swarm"})
 	public static void main(String[] args) {
 		SpringApplication.run(EurekaServerApplication.class, args);
 	}
