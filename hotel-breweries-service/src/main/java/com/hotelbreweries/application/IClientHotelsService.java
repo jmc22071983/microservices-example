@@ -12,7 +12,7 @@ public interface IClientHotelsService {
 	@GetMapping("/search-hotels-by-location")
 	public String retrieveHotelsLocation(@RequestParam String location);
 	
-	@GetMapping("/retrive-location-by-hotel-name")
+	@GetMapping("/retrieve-location-by-hotel-name")
 	public String hotelLocation(@RequestParam String hotelName);
 }
 
