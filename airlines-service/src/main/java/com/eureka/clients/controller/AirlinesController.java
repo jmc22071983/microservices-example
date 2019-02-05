@@ -31,8 +31,8 @@ public class AirlinesController {
 	private static final String Q_AIRLINES = "SELECT id, name, country FROM `travel-sample` WHERE type = 'airline'";
 	
 	private static Bucket openBucket(String bucketName) {
-		cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
-		//cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
+		//cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
+		cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
 		return cluster.openBucket(bucketName, PASS);
 	}
 	

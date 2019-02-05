@@ -38,7 +38,7 @@ public class HotelsController {
 	private static final String Q_HOTELS = "SELECT country, city, address, name, phone FROM `travel-sample` WHERE type = 'hotel'";
 	
 	private static Bucket openBucket(String bucketName) {
-		cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
+	//	cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
 		cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
 		return cluster.openBucket(bucketName, PASS);
 	}
