@@ -32,6 +32,7 @@ public class AirlinesController {
 	
 	private static Bucket openBucket(String bucketName) {
 		//cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
+		LOGGER.info("COUCHBASE_ADDR, {}", System.getenv("COUCHBASE_ADDR"));
 		cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
 		return cluster.openBucket(bucketName, PASS);
 	}
