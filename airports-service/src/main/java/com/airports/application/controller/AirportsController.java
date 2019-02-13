@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.ws.rs.Produces;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +16,8 @@ import com.couchbase.client.core.message.kv.subdoc.multi.Lookup;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
 import com.couchbase.client.java.CouchbaseCluster;
-import com.couchbase.client.java.document.JsonDocument;
+import com.couchbase.client.java.env.CouchbaseEnvironment;
+import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
 import com.couchbase.client.java.query.N1qlQuery;
 import com.couchbase.client.java.query.N1qlQueryResult;
 import com.couchbase.client.java.search.SearchQuery;
@@ -28,7 +26,8 @@ import com.couchbase.client.java.search.result.SearchQueryResult;
 import com.couchbase.client.java.search.result.SearchQueryRow;
 import com.couchbase.client.java.subdoc.DocumentFragment;
 import com.google.gson.Gson;
-
+import com.couchbase.client.java.env.CouchbaseEnvironment;
+import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -42,10 +41,13 @@ public class AirportsController {
 	private static final String TRAVEL_SAMPLE = "travel-sample";
 	private static final String PASS = "sysadmin";
 	private static final String Q_AIRPORTS = "SELECT id, airportname, city, country, geo FROM `travel-sample` WHERE type = 'airport'";
+	
 	private static Bucket openBucket(String bucketName) {
-		//cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
+        CouchbaseEnvironment env = DefaultCouchbaseEnvironment.builder()
+                .connectTimeout(10000)
+                .build();
 		LOGGER.info("COUCHBASE_ADDR, {}", System.getenv("COUCHBASE_ADDR"));
-		cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
+		cluster = CouchbaseCluster.create(env,System.getenv("COUCHBASE_ADDR"));
 		return cluster.openBucket(bucketName, PASS);
 	}
 	

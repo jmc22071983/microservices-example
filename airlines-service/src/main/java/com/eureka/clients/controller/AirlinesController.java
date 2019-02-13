@@ -4,7 +4,7 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.Produces;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
 import com.couchbase.client.java.CouchbaseCluster;
+import com.couchbase.client.java.env.CouchbaseEnvironment;
+import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
 import com.couchbase.client.java.query.N1qlQuery;
 import com.couchbase.client.java.query.N1qlQueryResult;
 
@@ -19,7 +21,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 
-@EnableWebSecurity
+//@EnableWebSecurity
 @RestController
 @Api(value="Airlines Service", tags = {"Airlines API Endpoints"})
 @Produces({"application/json"})
@@ -31,9 +33,11 @@ public class AirlinesController {
 	private static final String Q_AIRLINES = "SELECT id, name, country FROM `travel-sample` WHERE type = 'airline'";
 	
 	private static Bucket openBucket(String bucketName) {
-		//cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
+        CouchbaseEnvironment env = DefaultCouchbaseEnvironment.builder()
+                .connectTimeout(10000)
+                .build();
 		LOGGER.info("COUCHBASE_ADDR, {}", System.getenv("COUCHBASE_ADDR"));
-		cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
+		cluster = CouchbaseCluster.create(env,System.getenv("COUCHBASE_ADDR"));
 		return cluster.openBucket(bucketName, PASS);
 	}
 	

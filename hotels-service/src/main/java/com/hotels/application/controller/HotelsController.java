@@ -14,6 +14,8 @@ import com.couchbase.client.core.message.kv.subdoc.multi.Lookup;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
 import com.couchbase.client.java.CouchbaseCluster;
+import com.couchbase.client.java.env.CouchbaseEnvironment;
+import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
 import com.couchbase.client.java.query.N1qlQuery;
 import com.couchbase.client.java.query.N1qlQueryResult;
 import com.couchbase.client.java.search.SearchQuery;
@@ -38,8 +40,11 @@ public class HotelsController {
 	private static final String Q_HOTELS = "SELECT country, city, address, name, phone FROM `travel-sample` WHERE type = 'hotel'";
 	
 	private static Bucket openBucket(String bucketName) {
-	//	cluster = CouchbaseCluster.create("127.0.0.1:8091:8091");
-		cluster = CouchbaseCluster.create(System.getenv("COUCHBASE_ADDR"));
+        CouchbaseEnvironment env = DefaultCouchbaseEnvironment.builder()
+                .connectTimeout(10000)
+                .build();
+		LOGGER.info("COUCHBASE_ADDR, {}", System.getenv("COUCHBASE_ADDR"));
+		cluster = CouchbaseCluster.create(env,System.getenv("COUCHBASE_ADDR"));
 		return cluster.openBucket(bucketName, PASS);
 	}
 	
