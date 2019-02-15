@@ -5,7 +5,7 @@
 
 	<groupId>com.eureka</groupId>
 	<artifactId>config-services</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>config-services</name>
@@ -96,7 +96,7 @@
 							<goal>push</goal>
 						</goals>
 						<configuration>
-							<imageName>${docker.image.prefix}/${project.artifactId}:0.0.1-SNAPSHOT</imageName>
+							<imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
 						</configuration>
 					</execution>
 				</executions>

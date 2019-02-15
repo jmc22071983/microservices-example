@@ -25,12 +25,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
    @Autowired
    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-       auth.inMemoryAuthentication();
+       auth.inMemoryAuthentication().withUser("admin").password("{noop}password").roles("SYSTEM");
    }
  
    @Override
    protected void configure(HttpSecurity http) throws Exception {
-	http
+	   http.authorizeRequests().antMatchers("/actuator/health").permitAll();
+       http.authorizeRequests().anyRequest().hasRole("SYSTEM").and().httpBasic().and().csrf().disable(); 
+	   http
        .csrf().disable()
        .authorizeRequests()
        .antMatchers(HttpMethod.GET,"/airlines/**","/session-for-air/**").permitAll()

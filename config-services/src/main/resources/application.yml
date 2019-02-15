@@ -10,8 +10,3 @@ spring:
       server:
         git:
           uri: https://github.com/jmc22071983/config
-security:
-  user:
-    name: configUser
-    password: configPassword
-    role: SYSTEM
