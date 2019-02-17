@@ -6,7 +6,7 @@ spring:
     config:
       username: admin
       password: password
-      uri: http://localhost:8888
+      uri: http://localhost:8888/config
       failFast: true
       retry:
         initial-interval: 5000
@@ -24,7 +24,7 @@ spring:
     config:
       username: admin
       password: password
-      uri: http://config:8888
+      uri: http://config:8888/config
       failFast: true
       retry:
         initial-interval: 5000
@@ -39,7 +39,7 @@ spring:
     name: hotel-breweries-service
   cloud:
     config:
-      uri: http://cloud.r53config.vpc
+      uri: http://cloud.r53config.vpc/config
       failFast: true
       retry:
         initial-interval: 5000
