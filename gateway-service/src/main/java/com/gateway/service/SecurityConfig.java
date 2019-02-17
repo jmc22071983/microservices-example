@@ -25,6 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    @Override
    protected void configure(HttpSecurity http) throws Exception {
 	   http.authorizeRequests().antMatchers("/actuator/health").permitAll();
+	   http.authorizeRequests().antMatchers("/airlines-api/").permitAll();
+	   http.authorizeRequests().antMatchers("/airports-api/").permitAll();
+	   http.authorizeRequests().antMatchers("/hotels-api/").permitAll();
+	   http.authorizeRequests().antMatchers("/breweries-api/").permitAll();
+	   http.authorizeRequests().antMatchers("/hotel-breweries-api/").permitAll();
 	   http
        .csrf().disable()
        .authorizeRequests()
