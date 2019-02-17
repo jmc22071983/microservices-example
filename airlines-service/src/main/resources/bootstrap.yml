@@ -39,6 +39,8 @@ spring:
     name: airlines-service
   cloud:
     config:
+      username: admin
+      password: password
       uri: http://cloud.r53config.vpc/config
       failFast: true
       retry:
