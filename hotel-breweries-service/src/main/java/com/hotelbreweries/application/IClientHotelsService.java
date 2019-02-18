@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface IClientHotelsService {
 	
 
-	@GetMapping("/search-hotels-by-location")
+	@GetMapping("/hotels/search-hotels-by-location")
 	public String retrieveHotelsLocation(@RequestParam String location);
 	
-	@GetMapping("/retrieve-location-by-hotel-name")
+	@GetMapping("/hotels/retrieve-location-by-hotel-name")
 	public String hotelLocation(@RequestParam String hotelName);
 }
 

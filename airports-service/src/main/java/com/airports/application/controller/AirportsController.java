@@ -61,7 +61,7 @@ public class AirportsController {
 		return result.allRows().toString();
 	}
 	
-	@GetMapping("/search-airport")
+	@GetMapping("/airports/search-airport")
 	@ApiOperation(value = "Search airport by location", produces="application/json")
 	public String airportByLocation(@RequestParam String location) {  
 		List<Map<String,String>> sresult = new ArrayList<>();

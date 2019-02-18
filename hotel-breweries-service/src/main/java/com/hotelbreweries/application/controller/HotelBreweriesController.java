@@ -31,19 +31,19 @@ public class HotelBreweriesController {
 	
 
 	@ApiOperation(value = "Get hotel location - Return city", produces="application/json")
-	@GetMapping("/hotels/location/{location}")
+	@GetMapping("/hotel-breweries/hotels/location/{location}")
 	public String hotels(@PathVariable ("location") String location) {
 		return iClientHotelsService.retrieveHotelsLocation(location);
 	}
 	
 	@ApiOperation(value = "Get Breweries by an hotel location", produces="application/json")
-	@GetMapping("/breweries/location/{location}")
+	@GetMapping("/hotel-breweries/breweries/location/{location}")
 	public String breweriesByLocation(@PathVariable ("location") String location) {
 		return iClientBreweriesService.findBreweries(location);
 	}
 	
 	@ApiOperation(value = "Breweries near the city", produces="application/json")
-	@GetMapping("/breweries")
+	@GetMapping("/hotel-breweries/breweries")
 	public String breweries(@RequestParam String hotelName) {	
 		String city = iClientHotelsService.hotelLocation(hotelName);
 		return iClientBreweriesService.findBreweries(city);

@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	   http
        .csrf().disable()
        .authorizeRequests()
-       .antMatchers("/hotels/**", "/search-hotels-by-location/**", "/retrieve-location-by-hotel-name/**").permitAll()  
+       .antMatchers("/hotels/**", "/hotels/search-hotels-by-location/**", "/hotels/retrieve-location-by-hotel-name/**").permitAll() 
        .antMatchers(SWAGGER_AUTH_WHITELIST).permitAll()
        .antMatchers("*").hasRole("SYSTEM")
        .anyRequest().authenticated()

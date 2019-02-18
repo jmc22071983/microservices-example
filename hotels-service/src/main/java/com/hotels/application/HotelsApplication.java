@@ -20,12 +20,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class HotelsApplication {
 	private static final Logger logger = LoggerFactory.getLogger(HotelsApplication.class);
-	@Profile({ "default", "swarm" })
+	@Profile({ "default", "swarm", "aws" })
 	public static void main(String[] args) {
 		SpringApplication.run(HotelsApplication.class, args);
 	}
 	
-	@Bean
+	/*@Bean
 	@Autowired
 	@Profile("aws")
 	public EurekaInstanceConfigBean eurekaInstanceConfigBean(InetUtils inetUtils) {		
@@ -35,5 +35,5 @@ public class HotelsApplication {
 		config.setHostname(info.get(AmazonInfo.MetaDataKey.publicHostname));
 		config.setIpAddress(info.get(AmazonInfo.MetaDataKey.publicIpv4));
 		return config;
-	}
+	}*/
 }

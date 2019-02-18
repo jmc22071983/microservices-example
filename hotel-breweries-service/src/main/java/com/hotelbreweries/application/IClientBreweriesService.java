@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "breweries-service")
 public interface IClientBreweriesService {
 	
-	@GetMapping("/search-breweries-by-location")
+	@GetMapping("/breweries/search-breweries-by-location")
 	public String findBreweries(@RequestParam String location);
 }

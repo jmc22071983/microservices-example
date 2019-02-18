@@ -22,12 +22,12 @@ public class HotelBreweriesApplication {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HotelBreweriesApplication.class);
 	
-	@Profile({ "default", "swarm" })
+	@Profile({ "default", "swarm", "aws"})
 	public static void main(String[] args) {
 		SpringApplication.run(HotelBreweriesApplication.class, args);
 	}
 	
-	@Bean
+	/*@Bean
 	@Autowired
 	@Profile("aws")
 	public EurekaInstanceConfigBean eurekaInstanceConfigBean(InetUtils inetUtils) {		
@@ -37,7 +37,7 @@ public class HotelBreweriesApplication {
 		config.setHostname(info.get(AmazonInfo.MetaDataKey.publicHostname));
 		config.setIpAddress(info.get(AmazonInfo.MetaDataKey.publicIpv4));
 		return config;
-	}
+	}*/
 	
 	
 }

@@ -59,7 +59,7 @@ public class HotelsController {
 		return result.allRows().toString();
 	}
 	
-	@GetMapping("/search-hotels-by-location")
+	@GetMapping("/hotels/search-hotels-by-location")
 	@ApiOperation(value = "Search hotels by location", produces="application/json")
 	public String hotelByLocation(@RequestParam String location) {  
 		List<Map<String,String>> sresult = new ArrayList<>();
@@ -105,7 +105,7 @@ public class HotelsController {
 	}
 	
 	
-	@GetMapping("/retrieve-location-by-hotel-name")
+	@GetMapping("/hotels/retrieve-location-by-hotel-name")
 	@ApiOperation(value = "Retrieve city from hotel name", produces="application/json")
 	public String retrieveCityFromHotelName(@RequestParam String hotelName) {  
 		ConjunctionQuery fts = SearchQuery.conjuncts(SearchQuery.term("hotel").field("type"));

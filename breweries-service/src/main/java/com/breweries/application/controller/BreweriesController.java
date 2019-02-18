@@ -47,7 +47,7 @@ public class BreweriesController {
 		return cluster.openBucket(bucketName, PASS);
 	}
 	
-	@GetMapping("/search-breweries-by-location")
+	@GetMapping("/breweries/search-breweries-by-location")
 	@ApiOperation(value = "Find breweries by location", produces="application/json")
 	public String findBreweries(@RequestParam String location) {  
 		List<Map<String,String>> sresult = new ArrayList<>();
