@@ -22,12 +22,12 @@ public class EurekaServerApplication {
 	@Value("${server.port:8761}")
 	private int port;
 
-	@Profile({"default", "swarm", "aws"})
+	@Profile({"default", "swarm"})
 	public static void main(String[] args) {
 		SpringApplication.run(EurekaServerApplication.class, args);
 	}
 
-/*	@Bean
+	@Bean
 	@Autowired
 	@Profile("aws")
 	public EurekaInstanceConfigBean eurekaInstanceConfigBean(InetUtils inetUtils) {		
@@ -39,5 +39,5 @@ public class EurekaServerApplication {
 		return config;
 	}
 	
-*/
+
 }
